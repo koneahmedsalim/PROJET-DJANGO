@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>ALL PRODUCTS</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'home'%}">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{% url 'products' %}">ALL PRODUCTS</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-xl-9 col-lg-8 col-md-7">
+				<!-- Start Filter Bar -->
+				
+				<!-- End Filter Bar -->
+				<!-- Start Best Seller -->
+				<section class="lattest-product-area pb-40 category-list">
+					<div class="row">
+						<!-- single product -->
+						{% for product in products %}
+					 
+				<div class="col-lg-3 col-md-6">
+					<div class="single-product">
+						<img class="img-fluid" src="{{product.image.url}}" alt="">
+						<div class="product-details">
+							<h6>{{product.name}}</h6>
+							<div class="price">
+								<h6>$150.00</h6>
+								<h6 class="l-through">${{product.price}}</h6>
+							</div>
+							<div class="prd-bottom">
+
+								<a href="#" class="social-info">
+									<span class="ti-bag"></span>
+									<p class="hover-text">add to bag</p>
+								</a>
+								
+								<a href="{% url 'product' product.id%}" class="social-info">
+									<span class="lnr lnr-move"></span>
+									<p class="hover-text">view more</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				{% endfor %}
+						
+				</section>
+				<!-- End Best Seller -->
+				<!-- Start Filter Bar -->
+				
+				<!-- End Filter Bar -->
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
